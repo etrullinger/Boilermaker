@@ -9,7 +9,7 @@ const app = express();
 app.use(morgan('dev'));
 
 // static middleware
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '..','public')));
 
 // body parsing middleware
 app.use(bodyParser.json());

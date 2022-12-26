@@ -1,13 +1,15 @@
-const React = require("react");
-const { createRoot } = require("react-dom/client");
-const { Provider } = require('react-redux');
-const store = require('./store');
+import '../public/index.css';
+
+import React from 'react';
+import { createRoot } from "react-dom/client";
+import { Provider } from 'react-redux';
+import store from './store';
 
 const app = document.getElementById("app");
 const root = createRoot(app); 
 
 root.render(
   <Provider store={store}>
-    {/* rest of app goes here */}
+    <div>Hello, world!</div>
   </Provider>
 );
