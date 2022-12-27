@@ -1,8 +1,22 @@
 const Sequelize = require('sequelize');
 
-const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/boilermaker_db', {
+const config = {
   logging: false // unless you like the logs
-  // ...and there are many other options you may want to play with
-});
+};
+
+if(process.env.LOGGING === 'true'){
+  delete config.logging 
+};
+
+//https://stackoverflow.com/questions/61254851/heroku-postgres-sequelize-no-pg-hba-conf-entry-for-host
+if(process.env.DATABASE_URL){
+  config.dialectOptions = {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  };
+};
+
+const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/boilermaker_db', config);
 
 module.exports = db;

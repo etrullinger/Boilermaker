@@ -1,3 +1,5 @@
+//this is the access point for all things database related!
+
 const db = require('./db');
 const User = require('./User');
 const Puppy = require('./Puppy');
@@ -7,6 +9,8 @@ Puppy.belongsTo(User, { as: 'user' });
 
 module.exports = {
   db,
-  User,
-  Puppy,
+  models: {
+    User,
+    Puppy,
+  },
 };
