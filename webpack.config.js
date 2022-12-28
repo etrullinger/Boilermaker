@@ -9,16 +9,11 @@ module.exports = {
   },
   context: __dirname,
   devtool: 'source-map',
-  devServer: {
-    static: {
-      directory: __dirname + "/public",
-    },
-  },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
           presets: [

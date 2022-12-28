@@ -1,4 +1,7 @@
 const Sequelize = require('sequelize');
+const pkg = require('../../package.json')
+
+const databaseName = pkg.name + '_db' + (process.env.NODE_ENV === 'test' ? '-test' : '');
 
 const config = {
   logging: false // unless you like the logs
@@ -17,6 +20,6 @@ if(process.env.DATABASE_URL){
   };
 };
 
-const db = new Sequelize(process.env.DATABASE_URL || 'postgres://localhost:5432/boilermaker_db', config);
+const db = new Sequelize(process.env.DATABASE_URL || `postgres://localhost:5432/${databaseName}`, config);
 
 module.exports = db;
