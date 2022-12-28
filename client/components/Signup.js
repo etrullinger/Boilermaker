@@ -31,6 +31,7 @@ const Signup = () => {
 
       <label htmlFor='password'>Password:</label>
       <input
+        type='password'
         name='password'
         value={password}
         onChange={(evt) => setPassword(evt.target.value)}
